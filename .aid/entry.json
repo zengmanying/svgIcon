@@ -1,0 +1,16 @@
+{
+    "main": {
+        "input": {
+            "js": "src/main.js",
+            "css": "src/assets/styles/index.scss",
+            "html": "src/index.html"
+        },
+        "output":{
+            "html":"dist/index.html"
+        },
+        "vendor": {
+            "js": "base",
+            "css": "base"
+        }
+    }
+}

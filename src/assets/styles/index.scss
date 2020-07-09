@@ -1,0 +1,22 @@
+/**
+ * 本文件是项目样式构建主入口文件
+**/
+
+// Ai Design 默认主题样式库（如需要定制主题请注释下列样式引入）
+// @import '~aid-elements/dist/css/aid.min.css';
+
+// Ai Design 定制主题样式（如不需要定制主题请注释下列样式引入）
+@import 'aid-theme/aid-theme';
+
+// 项目重置 AiDesign 默认样式
+@import 'reset';
+
+// 项目布局样式
+@import 'layout';
+
+// 项目自定义可复用模块样式
+@import 'moudule';
+
+// 项目页面样式
+@import 'pages/index';
+

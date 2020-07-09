@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024px" height="1024px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>alert-circle</title>
+    <desc>Created with Sketch.</desc>
+    <g id="alert-circle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(63.000000, 64.000000)" fill="#585959" fill-rule="nonzero" id="形状">
+            <path d="M448.2,0.4 C200.8,0.4 0.2,201 0.2,448.4 C0.2,695.8 200.8,896.4 448.2,896.4 C695.6,896.4 896.2,695.8 896.2,448.4 C896.2,201 695.7,0.4 448.2,0.4 Z M413.6,260.1 C413.9,240.7 429.9,225.2 449.3,225.6 C468.2,225.9 483.5,241.2 483.8,260.1 L483.8,514.1 C483.5,533.5 467.5,549 448.1,548.6 C429.2,548.3 413.9,533 413.6,514.1 L413.6,260.1 Z M449,672.9 C426.8,672.9 408.9,654.9 408.9,632.7 C408.9,610.5 426.9,592.6 449.1,592.6 C471.3,592.6 489.2,610.6 489.2,632.8 L489.2,632.8 C489.2,654.9 471.2,672.9 449,672.9 L449,672.9 Z"></path>
+        </g>
+    </g>
+</svg>

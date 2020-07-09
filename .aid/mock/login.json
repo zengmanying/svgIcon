@@ -1,0 +1,13 @@
+[
+  {
+    "url": "/mock/dologin",
+    "method": "post",
+    "response": {
+      "success": true,
+      "auth": {
+        "username": "test",
+        "token": "1234"
+      }
+    }
+  }
+]

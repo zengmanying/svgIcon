@@ -1,0 +1,14 @@
+image: node:latest
+cache:
+  paths:
+    - node_modules/
+
+pages:
+  stage: deploy
+  script:
+    - mkdir temp
+    - cp -R src static test .aid .babelrc .eslintrc.js .eslintignore .gitignore .stylelintrc .cvsignore .svnignore HISTORY.md package.json README.md temp
+    - tar zcvf spa-2.0.tar.gz temp
+    - rclone copy spa-2.0.tar.gz aid-template:/aifs01/template
+    - rm -rf spa-2.0.tar.gz
+    - rm -rf temp

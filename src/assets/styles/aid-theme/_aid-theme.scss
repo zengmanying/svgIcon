@@ -1,0 +1,15 @@
+/**
+ * 本文件是AiDesign主题定制样式定义文件
+**/
+
+// 引入项目定制变量
+@import 'variable';
+
+// AiDesign 样式库变量
+@import '~aid-elements/src/aid/variable';
+
+// 思源中文字体较大，根据设计需要引用
+// @import '~aid-elements/src/fonts/_scss/fonts-base';
+
+// AiDesign 样式框架核心库
+@import '~aid-elements/src/aid/index';

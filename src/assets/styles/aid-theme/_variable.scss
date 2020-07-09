@@ -1,0 +1,26 @@
+/** variable.scss 是主题定制变量定义文件，请根据项目设计需求调整变量值 **/
+
+// 品牌主色定制
+$brand-primary: #2d98ff;
+
+// body 背景色定制
+$body-bg: #fff;
+
+// 是否开启渐变色
+$enable-gradients: false;
+
+// 组件相关属性是否应用品牌主色
+// 建议品牌主色与安全色接近时设置 false
+$enable-brand-primary: true;
+
+// 基础字体定制
+$font-family-base: null; // 使用系统默认字体
+// $font-family-base:  NotoSansSC; // 使用思源字体（中文字体较大），根据设计需要设置
+
+// 安全色
+$brand-success:             #31cf9a;
+$brand-info:                #17a7fb;
+$brand-warning:             #ffbc33;
+$brand-danger:              #ff5f5f;
+
+

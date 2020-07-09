@@ -1,0 +1,8 @@
+{
+    "js":{
+        "base":[
+            "vuex","vue-router","axios",
+            "aid-taurus-desktop"
+        ]
+    }
+}

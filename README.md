@@ -1,58 +1,99 @@
-# Ai Design 单页应用项目工程模板
+# 使用svg 图标示例工程
 
-本模版用于构建基于 Ai Design Taurus 组件库单页项目工程。
+本工程基于aid-cli初始化工程。
 
-本模版中涉及的国际化语言资源是通过工程编译来加载的。
 
-## 开发
+## 包含四个部分
+1. 配置 svg-sprite-loader 将svg文件合成svg 雪碧图
+2. 配置 svgo-loader 优化 svg，并去除填充色,方便我们自定义颜色
+3. require.context 一次引入所有文件
+4. 组件化
 
-首先，打开命令行控制台，进入工程根目录，然后执行下面的命令进行预打包：
+### 配置 svg-sprite-loader
 
-```bash
-# 将项目第三方依赖包预打包,提升项目开发编译速度
-aid vendor
+svg-sprite-loader 会把你的 svg 塞到一个个 symbol 中，合成一个大的 svg。
+最后将这个大的 svg 放入 body 中。
+symbol的id如果不特别指定，就是你的文件名。
+在页面上形成这样的元素:
+
+```html
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="__SVG_SPRITE_NODE__">
+      <symbol xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 1024 1024" id="xxx">
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 1024 1024" id="xxx">
+      </symbol>
+    </svg>
+</body>
 ```
 
-> 注意：如果第三方包被更新需要重新运行这个命令以提升开发效率
-
-执行以下命令启动本地开发服务器：
-
-```bash
-aid dev
+我们的每一个 icon 都对应着一个 symbol 元素，这个时候我们就可以在页面使用 svg use 啦。
+```html
+<svg>
+  <use xlink:href="#xxx"/>
+</svg>
 ```
 
-你可以通过`-p`参数指定服务器端口：
-
 ```bash
-aid dev -p 3000
+#### 只作用于我们需要制作成图标的svg文件
+rules.push(
+  {
+    test: /\.svg$/,
+    use: [
+      {
+        loader: 'svg-sprite-loader',
+        options: {
+          symbolId: 'icon-[name]'
+        }
+      }
+    ],
+    include: [path.resolve(__dirname, '../src/components/icon/svg')]
+  }
 ```
 
-本地开发服务器启动完毕后会自动打开默认浏览器并跳转至项目首页。
+### 配置 svgo-loader
 
-## 单元测试
-
-单元测试用例写在`test/unit/spec`目录下，执行下面的命令运行单元测试：
+使用 svgo-loader 优化我们的svg，以及去除fill填充色，方便我们自定义图标颜色
 
 ```bash
-aid test --watch
+#### 只作用于我们需要制作成图标的svg文件
+rules.push(
+  {
+    test: /\.svg$/,
+    use: [
+      {
+        loader: 'svg-sprite-loader',
+        options: {
+          symbolId: 'icon-[name]'
+        }
+      },
+      {
+        loader: 'svgo-loader',
+        options: {
+          plugins: [
+            {removeTitle: true},
+            {removeAttrs: {attrs: 'path:fill'}},
+            {convertPathData: false}
+          ]
+        }
+      }
+    ],
+    include: [path.resolve(__dirname, '../src/components/icon/svg')]
+  }
 ```
 
-## 集成测试
+### require.context 一次引入所有文件
 
-集成测试用例写在`test/e2e/spec`目录下，执行下面的命令运行集成测试：
+`js
+  const requireAll = requireContext => requireContext.keys().map(requireContext)
+  const req = require.context('./svg', false, /\.svg$/)
+  requireAll(req)
+`
 
-```bash
-aid test --e2e
-```
+### icon组件化
+最后，把icon组件化，方便项目使用。
+`html
+  <svg-icon :customer-styles="svgIconStyles" size="28px" color="red" icon="alert-circle" bg-color="primary" rotate="180"></svg-icon>
+`
 
-> 注意：集成测试默认使用 chrome 浏览器
 
-## 打包发布
-
-通过以下命令进行工程编译：
-
-```bash
-aid build
-```
-
-工程编译后的文件默认会保存到`dist`目录下。

@@ -23,11 +23,26 @@ function rules(config) {
   rules.push(
     {
       test: /\.svg$/,
-      loader: 'svg-sprite-loader',
+      use: [
+        {
+          loader: 'svg-sprite-loader',
+          options: {
+            symbolId: 'icon-[name]'
+          }
+        },
+        {
+          loader: 'svgo-loader',
+          options: {
+            plugins: [
+              {removeTitle: true},
+              {removeAttrs: {attrs: 'path:fill'}},
+              {convertPathData: false}
+            ]
+          }
+        }
+      ],
       include: [path.resolve(__dirname, '../src/components/icon/svg')],
-      options: {
-        symbolId: 'icon-[name]'
-      }
+     
     }
   )
   console.log(rules)

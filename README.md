@@ -88,12 +88,12 @@ rules.push(
   const requireAll = requireContext => requireContext.keys().map(requireContext)
   const req = require.context('./svg', false, /\.svg$/)
   requireAll(req)
-`
+```
 
-### icon组件化
-最后，把icon组件化，方便项目使用。
+### 最后，把icon组件化，方便项目使用
 ```base
+  // 最后使用方式
   <svg-icon :customer-styles="svgIconStyles" size="28px" color="red" icon="alert-circle" bg-color="primary" rotate="180"></svg-icon>
-`
+```
 
 
